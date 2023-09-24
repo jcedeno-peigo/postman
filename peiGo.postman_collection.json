@@ -1,0 +1,1078 @@
+{
+	"info": {
+		"_postman_id": "f58a381e-21ee-46cd-a300-6a51833e7773",
+		"name": "peiGo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23383250"
+	},
+	"item": [
+		{
+			"name": "Wallet",
+			"item": [
+				{
+					"name": "checkout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "x-cognito-sub",
+								"value": "7c8e6db8-5d47-4d50-b677-74ba72b562cc",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/api/v1/wallet/checkout",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallet",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wallet",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "x-cognito-sub",
+								"value": "7c8e6db8-5d47-4d50-b677-74ba72b562cc",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{uri}}/api/v1/wallet",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallet"
+							],
+							"query": [
+								{
+									"key": "Au",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cash-in",
+			"item": [
+				{
+					"name": "bs-payment-provider",
+					"item": [
+						{
+							"name": "onboarding",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"transientToken\":\"eyJraWQiOiIwOFFhbm12ZkxMQlBKbUprdUhtS1NudDNkcWd5aG1PYiIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJGbGV4LzA4IiwiZXhwIjoxNjg5NzA2MjQ4LCJ0eXBlIjoiYXBpLTAuMS4wIiwiaWF0IjoxNjg5NzA1MzQ4LCJqdGkiOiIxRTQ0QVZENTQxSldJS1JZWTUwVzlLVVJFTUNGRjNZUFhUTEFGUlgzVE45TDlQMU1DNkZBNjRCNkRGMDhGMDIxIiwiY29udGVudCI6eyJwYXltZW50SW5mb3JtYXRpb24iOnsiY2FyZCI6eyJleHBpcmF0aW9uWWVhciI6eyJ2YWx1ZSI6IjI2In0sIm51bWJlciI6eyJtYXNrZWRWYWx1ZSI6IlhYWFhYWFhYWFhYWDEwOTEiLCJiaW4iOiI0MDAwMDAifSwic2VjdXJpdHlDb2RlIjp7fSwiZXhwaXJhdGlvbk1vbnRoIjp7InZhbHVlIjoiMDEifX19fX0.h2HztqR-2tcPxR3KM1IKOn0QosjCwWj3zQ9jRBGEr1cKmIevQV6njY1-ZXbbbtHM0NvOQJlkAJCeiklve3pGvsXqF7YJIbsOJW44zjmrt1GfPuMZyq57MVXV4_8Y55ruERnGAIjNwKhINjrjuZX4bVHSf0NT4vqS_SfSejI4NZ0KN4gv5DHKDSSvvKSN0cyqP1cqiRBsYdAy21piXDTlIhQAnIbm_iufA_g3-NtEkGtleVu4TEFhcxtFeiUq5u02DLNr4JX8Bqt-UjY8J_YTXW8p9hBvHvcim1aTHfh1UYEFKz-La7am-OPGh7SvmAMRSQD4z-6JKHEaqtHD3EXfqw\",\n    \"orderNumber\": \"364fdcd1-d49a-4007-ae71-8160d7596034\",\n    \"consumerSessionId\": \"1_2f605a50-b39a-4347-92d9-3d111f0f7ab3\",\n    \"fingerprintSessionId\": \"cc48988e-0f85-45b6-9922-2de8fac15fbc\",\n    \"name\": \"FRANCISCO\",\n    \"lastName\": \"MOLINA\", // aumentar en token solicitar a account\n    \"email\": \"review@review.com\",\n    \"phoneNumber\": \"0987654321\",\n    \"amount\": 0,\n    \"merchantInformation\": [\n        {\n            \"key\": \"2\",\n            \"value\": \"001\"\n        },\n        {\n            \"key\": \"3\",\n            \"value\": \"001\"\n        },\n        {\n            \"key\": \"4\",\n            \"value\": \"pepito juanito perez garcia\"\n        },\n        {\n            \"key\": \"5\",\n            \"value\": \"1234567890\"\n        }\n    ],\n    //Validar con Mario si van datos predefinidos / traer de account endpoint de person\n    \"country\": \"EC\", //pais, account debe devolverlo, por ahora se queda en duro EC\n    \"locality\": \"san francisco\",//ciudad\n    \"address\": \"1 Market St\", //direccion\n    \"currency\": \"001\",\n    \"accountNumber\": \"1234567890\" // Preguntar si al bs-llega en codigo catalogo\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{internalUri}}/bs-payment-provider/v1/onboarding",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"bs-payment-provider",
+										"v1",
+										"onboarding"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "onboarding/authorization",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"transientToken\":\"eyJraWQiOiIwOFFhbm12ZkxMQlBKbUprdUhtS1NudDNkcWd5aG1PYiIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJGbGV4LzA4IiwiZXhwIjoxNjg5NzA2MjQ4LCJ0eXBlIjoiYXBpLTAuMS4wIiwiaWF0IjoxNjg5NzA1MzQ4LCJqdGkiOiIxRTQ0QVZENTQxSldJS1JZWTUwVzlLVVJFTUNGRjNZUFhUTEFGUlgzVE45TDlQMU1DNkZBNjRCNkRGMDhGMDIxIiwiY29udGVudCI6eyJwYXltZW50SW5mb3JtYXRpb24iOnsiY2FyZCI6eyJleHBpcmF0aW9uWWVhciI6eyJ2YWx1ZSI6IjI2In0sIm51bWJlciI6eyJtYXNrZWRWYWx1ZSI6IlhYWFhYWFhYWFhYWDEwOTEiLCJiaW4iOiI0MDAwMDAifSwic2VjdXJpdHlDb2RlIjp7fSwiZXhwaXJhdGlvbk1vbnRoIjp7InZhbHVlIjoiMDEifX19fX0.h2HztqR-2tcPxR3KM1IKOn0QosjCwWj3zQ9jRBGEr1cKmIevQV6njY1-ZXbbbtHM0NvOQJlkAJCeiklve3pGvsXqF7YJIbsOJW44zjmrt1GfPuMZyq57MVXV4_8Y55ruERnGAIjNwKhINjrjuZX4bVHSf0NT4vqS_SfSejI4NZ0KN4gv5DHKDSSvvKSN0cyqP1cqiRBsYdAy21piXDTlIhQAnIbm_iufA_g3-NtEkGtleVu4TEFhcxtFeiUq5u02DLNr4JX8Bqt-UjY8J_YTXW8p9hBvHvcim1aTHfh1UYEFKz-La7am-OPGh7SvmAMRSQD4z-6JKHEaqtHD3EXfqw\",\n    \"orderNumber\": \"364fdcd1-d49a-4007-ae71-8160d7596034\",\n    \"consumerSessionId\": \"1_2f605a50-b39a-4347-92d9-3d111f0f7ab3\",\n    \"fingerprintSessionId\": \"cc48988e-0f85-45b6-9922-2de8fac15fbc\",\n    \"name\": \"\",\n    \"lastName\": \"MOLINA\", // aumentar en token solicitar a account\n    \"email\": \"review@review.com\",\n    \"phoneNumber\": \"0987654321\",\n    \"amount\": 0,\n    \"merchantInformation\": [\n        {\n            \"key\": \"2\",\n            \"value\": \"001\"\n        },\n        {\n            \"key\": \"3\",\n            \"value\": \"001\"\n        },\n        {\n            \"key\": \"4\",\n            \"value\": \"pepito juanito perez garcia\"\n        },\n        {\n            \"key\": \"5\",\n            \"value\": \"1234567890\"\n        }\n    ],\n    //Validar con Mario si van datos predefinidos / traer de account endpoint de person\n    \"country\": \"EC\", //pais, account debe devolverlo, por ahora se queda en duro EC\n    \"locality\": \"san francisco\",//ciudad\n    \"address\": \"1 Market St\", //direccion\n    \"currency\": \"USD\",\n    \"authenticationTransactionId\": \"neObp1m3h9Ru3LSWinp0\",\n    \"accountNumber\":\"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{internalUri}}/bs-payment-provider/v1/onboarding/authorization",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"bs-payment-provider",
+										"v1",
+										"onboarding",
+										"authorization"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "debit",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"paymentInstrument\":\"FF0FF2F5A08EE29FE053AF598E0A2138\",\n    \"amount\": \"1\",\n    \"consumerSessionId\": \"0_d9414e14-f086-4c20-92b5-fc10b805ccf2\",\n    \"orderNumber\": \"de30f01d-9b5a-4f0b-bd3d-7f9d0ac3b009\",\n    \"fingerprintSessionId\": \"fc761463-b63d-43e9-9175-59392db9d45f\",\n    \"merchantInformation\": [\n        {\n            \"key\": \"2\",\n            \"value\": \"002\"\n        },\n        {\n            \"key\": \"3\",\n            \"value\": \"001\"\n        },\n        {\n            \"key\": \"4\",\n            \"value\": \"Álava Posligua Juan Fernando\"\n        }\n    ],\n    \"cardType\": \"002\",\n    \"currency\": \"001\",\n    \"accountNumber\":\"12121212\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{internalUri}}/bs-payment-provider/v1/debit",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"bs-payment-provider",
+										"v1",
+										"debit"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "debit/authorization",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"paymentInstrument\":\"FF0FE304C8989591E053AF598E0ADD81\",\n    \"amount\": \"10.00\",\n    \"consumerSessionId\": \"0_d9414e14-f086-4c20-92b5-fc10b805ccf2\",\n    \"orderNumber\": \"de30f01d-9b5a-4f0b-bd3d-7f9d0ac3b009\",\n    \"fingerprintSessionId\": \"fc761463-b63d-43e9-9175-59392db9d45f\",\n    \"merchantInformation\": [\n        {\n            \"key\": \"2\",\n            \"value\": \"002\"\n        },\n        {\n            \"key\": \"3\",\n            \"value\": \"001\"\n        },\n        {\n            \"key\": \"4\",\n            \"value\": \"Álava Posligua Juan Fernando\"\n        }\n    ],\n    \"cardType\": \"002\",\n    \"currency\": \"001\",\n    \"accountNumber\": \"123456789\",\n    \"authenticationTransactionId\": \"H701L0ysHGwpt0YYli70\"\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{internalUri}}/bs-payment-provider/v1/debit/authorization",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"bs-payment-provider",
+										"v1",
+										"debit",
+										"authorization"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "flexJwt",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{internalUri}}/bs-payment-provider/v1/flexJwt",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"bs-payment-provider",
+										"v1",
+										"flexJwt"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cardinalJwt",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authorization}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{internalUri}}/bs-payment-provider/v1/paymentProvider/flexJwt",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"bs-payment-provider",
+										"v1",
+										"paymentProvider",
+										"flexJwt"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "refund",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"transactionId\": \"6899053375376234804953\",\n    \"amount\": \"10\",\n    \"orderNumber\": \"de30f01d-9b5a-4f0b-bd3d-7f9d0ac3b009\",\n    \"currency\": \"001\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{internalUri}}/bs-payment-provider/v1/refund",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"bs-payment-provider",
+										"v1",
+										"refund"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ps-cash-in",
+					"item": [
+						{
+							"name": "tokenizer",
+							"protocolProfileBehavior": {
+								"followAuthorizationHeader": false
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authorization}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"transientToken\": \"eyJraWQiOiIwOEpJZ2hMQU5aeElzR2ViZXFMUGd3MUhzVnozbFhSNSIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJGbGV4LzA4IiwiZXhwIjoxNjg0OTY3ODkyLCJ0eXBlIjoiYXBpLTAuMS4wIiwiaWF0IjoxNjg0OTY2OTkyLCJqdGkiOiIxRTM3ODVKSjkwOEJDVFQzS0RVN1lQTUhWNDRDOElBMU9MNU04MjFIN01LS0RSUUlWQjhCNjQ2RTkxRDRFOTAzIiwiY29udGVudCI6eyJwYXltZW50SW5mb3JtYXRpb24iOnsiY2FyZCI6eyJleHBpcmF0aW9uWWVhciI6eyJ2YWx1ZSI6IjI2In0sIm51bWJlciI6eyJtYXNrZWRWYWx1ZSI6IlhYWFhYWFhYWFhYWDI5MjUiLCJiaW4iOiI0MDAwMDAifSwic2VjdXJpdHlDb2RlIjp7fSwiZXhwaXJhdGlvbk1vbnRoIjp7InZhbHVlIjoiMDEifX19fX0.vSPfF0g9xEF1lrcUIeOIznLwZ298M51K_vJI5TTvrfef0BGJsl2ID52la1P-4GJDGiDQECdJx3n-FXurGs0eoXMczjIDnh1ihcD4E-f-mz10LjHvj1KiedKWWTNheFmQyL_D_RAREiZ8YTREIQsvSyZCn_d-C0KMr6D3lhBJTFHX9ejBThvGs7H6Wgg4fu99Ts9_T4onyJAEGs7Y82weneQkJkKTyDs1Z_Zzk0uTsXp7bD5yTQIP-JYDsA2XGQv0saMIRmvURsxYCJSxcs9PWcRVnJ76zXTBFFMajA_N7DOU7w2FCmbe2OECxqwvc8076U7HVUeKhRAYCzJ_GAeF9A\",\n    \"fingerprintSessionId\": \"peigo1234567891\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{internalUri}}/ps-cash-in/v1/cards/save",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"ps-cash-in",
+										"v1",
+										"cards",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cashin",
+							"protocolProfileBehavior": {
+								"followAuthorizationHeader": false
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authorization}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fingerprintSessionId\": \"peigo1234567891\",\n    \"amount\": 1.00,\n    \"cardId\": \"579b451c-e250-4c91-90a8-99d02824f4a6\",\n    \"channel\": \"WALLET\",\n    \"transactionType\": \"003\", //CASHIN\n    \"currencyType\": \"001\" //USD\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{uri}}/ps-cash-in/v1/cards",
+									"host": [
+										"{{uri}}"
+									],
+									"path": [
+										"ps-cash-in",
+										"v1",
+										"cards"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "bs-transfer",
+					"item": [
+						{
+							"name": "cashin",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJraWQiOiJpQlZuc0RCT2h5MEFKWmw5YTBXQlJZZTltVXZ3Y01PWFhsMis1bWY5NU1JPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIyMzg2MDU0Ni04NzZkLTRmYzItODk5My0xOGQyNjY0MjZiZDYiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9Nc3U1SENhNGsiLCJjdXN0b206YWNjb3VudF9udW1iZXIiOiIxMTM4NDk3NDA2IiwiY3VzdG9tOmJpb192YWxpZGF0aW9uIjoiMSIsImF1dGhfdGltZSI6MTY4NTAzMzcwNSwiY3VzdG9tOnNob3J0bmFtZSI6InRlc3QiLCJleHAiOjE2ODUwMzQwMDUsImN1c3RvbTpmdWxsX25hbWVfcHJvdmlkZXIiOiJDSEFWRVogVEFSUklMTE8gR0lMQkVSVE8iLCJpYXQiOjE2ODUwMzM3MDUsImp0aSI6IjU5MzIyOGEwLWI3NmEtNDU3My1hMWMxLWRhMzE1NGY4MzQ2NyIsImVtYWlsIjoic2ViYWxvcGVvckB5b3BtYWlsLmNvbSIsImN1c3RvbTp0eWNfYWNjb3VudF9hY2NlcHRlZCI6IjEiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tOmVuZF9vbmJvYXJkaW5nIjoiMSIsInBob25lX251bWJlcl92ZXJpZmllZCI6ZmFsc2UsImNvZ25pdG86dXNlcm5hbWUiOiIwOTYzMjU4NzQ0IiwiY3VzdG9tOnR5Y19wZXJfaW5mX2FjY2VwdGVkIjoiMSIsImN1c3RvbTpuaWNrbmFtZSI6ImNoYXZlenRhcWZnZCIsIm9yaWdpbl9qdGkiOiI1N2EzNWJkZS0xN2U2LTQ5YmEtYmU2Ni1lZjMwMDgyOGMxZGYiLCJhdWQiOiIzdGsyZmJyMTZpczQ0MDRyNHZnMm4xZm42ciIsImV2ZW50X2lkIjoiNmM2MzM5OTYtZGUwZS00NDc0LThhMDktZmQ4ZDFjYjY1MWVlIiwiY3VzdG9tOm90cF92YWxpZGF0aW9uIjoiMSIsInRva2VuX3VzZSI6ImlkIiwibXlfcGVpZ29fcHJvZmlsZSI6IlNVQ0NFU1MiLCJuYW1lIjoidGVzdCIsInBob25lX251bWJlciI6Iis1OTM5Njc4NTMxMjEiLCJmYW1pbHlfbmFtZSI6ImxvcGV6In0.eHMKhMWahdkACXxUWYZeNzCc8H1HK-F68kBuVuwmlbxpQU4r4xkyj1JH-CRrrpOJQnrxjIxqZ0zZRHSDvniSB3WhCbNDnQFGtKxQ8ctbGDSqoOOYTN29hVFRSLXgk3qj_mF4P09UDlnafDUbO9Svrs-fS6kr68JjXvXNVpF7vyYB4wsy1GFTJOpLo4tHQoGcEfVZXt9bFMSZ4iwbnP8bXce5-SxUbjByqLKvRIDIn5j-0EFhBN0EnT2rpODUtpIKQ_P6ceENMI_0Ehj0BdU-nEsVV02K0Hek7fb4DznhI3rBVkC3CqUkQ2kvVUcEGvNWLkr8KC5ReAV0HeUGohZ8FA"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"creditAccount\": \"1138510666\",\n    \"amount\": 3,\n    \"identificationNumber\": \"123456789\",\n    \"beneficiaryName\": \"Maritza\",\n    \"sequentialCash\": \"820001000001468\"\n}"
+								},
+								"url": {
+									"raw": "{{internalUri}}/bs-transfer/v1/transfer/cashin",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"bs-transfer",
+										"v1",
+										"transfer",
+										"cashin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "validate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJraWQiOiJpQlZuc0RCT2h5MEFKWmw5YTBXQlJZZTltVXZ3Y01PWFhsMis1bWY5NU1JPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIyMzg2MDU0Ni04NzZkLTRmYzItODk5My0xOGQyNjY0MjZiZDYiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9Nc3U1SENhNGsiLCJjdXN0b206YWNjb3VudF9udW1iZXIiOiIxMTM4NDk3NDA2IiwiY3VzdG9tOmJpb192YWxpZGF0aW9uIjoiMSIsImF1dGhfdGltZSI6MTY4NTAzMzcwNSwiY3VzdG9tOnNob3J0bmFtZSI6InRlc3QiLCJleHAiOjE2ODUwMzQwMDUsImN1c3RvbTpmdWxsX25hbWVfcHJvdmlkZXIiOiJDSEFWRVogVEFSUklMTE8gR0lMQkVSVE8iLCJpYXQiOjE2ODUwMzM3MDUsImp0aSI6IjU5MzIyOGEwLWI3NmEtNDU3My1hMWMxLWRhMzE1NGY4MzQ2NyIsImVtYWlsIjoic2ViYWxvcGVvckB5b3BtYWlsLmNvbSIsImN1c3RvbTp0eWNfYWNjb3VudF9hY2NlcHRlZCI6IjEiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tOmVuZF9vbmJvYXJkaW5nIjoiMSIsInBob25lX251bWJlcl92ZXJpZmllZCI6ZmFsc2UsImNvZ25pdG86dXNlcm5hbWUiOiIwOTYzMjU4NzQ0IiwiY3VzdG9tOnR5Y19wZXJfaW5mX2FjY2VwdGVkIjoiMSIsImN1c3RvbTpuaWNrbmFtZSI6ImNoYXZlenRhcWZnZCIsIm9yaWdpbl9qdGkiOiI1N2EzNWJkZS0xN2U2LTQ5YmEtYmU2Ni1lZjMwMDgyOGMxZGYiLCJhdWQiOiIzdGsyZmJyMTZpczQ0MDRyNHZnMm4xZm42ciIsImV2ZW50X2lkIjoiNmM2MzM5OTYtZGUwZS00NDc0LThhMDktZmQ4ZDFjYjY1MWVlIiwiY3VzdG9tOm90cF92YWxpZGF0aW9uIjoiMSIsInRva2VuX3VzZSI6ImlkIiwibXlfcGVpZ29fcHJvZmlsZSI6IlNVQ0NFU1MiLCJuYW1lIjoidGVzdCIsInBob25lX251bWJlciI6Iis1OTM5Njc4NTMxMjEiLCJmYW1pbHlfbmFtZSI6ImxvcGV6In0.eHMKhMWahdkACXxUWYZeNzCc8H1HK-F68kBuVuwmlbxpQU4r4xkyj1JH-CRrrpOJQnrxjIxqZ0zZRHSDvniSB3WhCbNDnQFGtKxQ8ctbGDSqoOOYTN29hVFRSLXgk3qj_mF4P09UDlnafDUbO9Svrs-fS6kr68JjXvXNVpF7vyYB4wsy1GFTJOpLo4tHQoGcEfVZXt9bFMSZ4iwbnP8bXce5-SxUbjByqLKvRIDIn5j-0EFhBN0EnT2rpODUtpIKQ_P6ceENMI_0Ehj0BdU-nEsVV02K0Hek7fb4DznhI3rBVkC3CqUkQ2kvVUcEGvNWLkr8KC5ReAV0HeUGohZ8FA"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"account\": \"1138510666\",\n    \"amount\": 3,\n    \"sequentialCash\": \"820001000001462\",\n    \"movementType\": \"002\"\n}"
+								},
+								"url": {
+									"raw": "{{internalUri}}/bs-transfer/v1/compensation/validate",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"bs-transfer",
+										"v1",
+										"compensation",
+										"validate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reverse",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJraWQiOiJpQlZuc0RCT2h5MEFKWmw5YTBXQlJZZTltVXZ3Y01PWFhsMis1bWY5NU1JPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIyMzg2MDU0Ni04NzZkLTRmYzItODk5My0xOGQyNjY0MjZiZDYiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9Nc3U1SENhNGsiLCJjdXN0b206YWNjb3VudF9udW1iZXIiOiIxMTM4NDk3NDA2IiwiY3VzdG9tOmJpb192YWxpZGF0aW9uIjoiMSIsImF1dGhfdGltZSI6MTY4NTAzMzcwNSwiY3VzdG9tOnNob3J0bmFtZSI6InRlc3QiLCJleHAiOjE2ODUwMzQwMDUsImN1c3RvbTpmdWxsX25hbWVfcHJvdmlkZXIiOiJDSEFWRVogVEFSUklMTE8gR0lMQkVSVE8iLCJpYXQiOjE2ODUwMzM3MDUsImp0aSI6IjU5MzIyOGEwLWI3NmEtNDU3My1hMWMxLWRhMzE1NGY4MzQ2NyIsImVtYWlsIjoic2ViYWxvcGVvckB5b3BtYWlsLmNvbSIsImN1c3RvbTp0eWNfYWNjb3VudF9hY2NlcHRlZCI6IjEiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiY3VzdG9tOmVuZF9vbmJvYXJkaW5nIjoiMSIsInBob25lX251bWJlcl92ZXJpZmllZCI6ZmFsc2UsImNvZ25pdG86dXNlcm5hbWUiOiIwOTYzMjU4NzQ0IiwiY3VzdG9tOnR5Y19wZXJfaW5mX2FjY2VwdGVkIjoiMSIsImN1c3RvbTpuaWNrbmFtZSI6ImNoYXZlenRhcWZnZCIsIm9yaWdpbl9qdGkiOiI1N2EzNWJkZS0xN2U2LTQ5YmEtYmU2Ni1lZjMwMDgyOGMxZGYiLCJhdWQiOiIzdGsyZmJyMTZpczQ0MDRyNHZnMm4xZm42ciIsImV2ZW50X2lkIjoiNmM2MzM5OTYtZGUwZS00NDc0LThhMDktZmQ4ZDFjYjY1MWVlIiwiY3VzdG9tOm90cF92YWxpZGF0aW9uIjoiMSIsInRva2VuX3VzZSI6ImlkIiwibXlfcGVpZ29fcHJvZmlsZSI6IlNVQ0NFU1MiLCJuYW1lIjoidGVzdCIsInBob25lX251bWJlciI6Iis1OTM5Njc4NTMxMjEiLCJmYW1pbHlfbmFtZSI6ImxvcGV6In0.eHMKhMWahdkACXxUWYZeNzCc8H1HK-F68kBuVuwmlbxpQU4r4xkyj1JH-CRrrpOJQnrxjIxqZ0zZRHSDvniSB3WhCbNDnQFGtKxQ8ctbGDSqoOOYTN29hVFRSLXgk3qj_mF4P09UDlnafDUbO9Svrs-fS6kr68JjXvXNVpF7vyYB4wsy1GFTJOpLo4tHQoGcEfVZXt9bFMSZ4iwbnP8bXce5-SxUbjByqLKvRIDIn5j-0EFhBN0EnT2rpODUtpIKQ_P6ceENMI_0Ehj0BdU-nEsVV02K0Hek7fb4DznhI3rBVkC3CqUkQ2kvVUcEGvNWLkr8KC5ReAV0HeUGohZ8FA"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"account\": \"1138510666\",\n    \"amount\": 3,\n    \"sequentialCash\": \"830001000001467\",\n    \"operationType\": \"002\"\n}"
+								},
+								"url": {
+									"raw": "{{internalUri}}/bs-transfer/v1/compensation/reverse",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"bs-transfer",
+										"v1",
+										"compensation",
+										"reverse"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sequentialCash",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "JSESSIONID=2D02C543E8057E0AFAB504709338E479"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9999/api/v1/sequential_cash?movement_type=DEBIT",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"sequential_cash"
+									],
+									"query": [
+										{
+											"key": "movement_type",
+											"value": "DEBIT"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CashIn",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Idempotency-Key",
+								"value": "1325b245-c44a-40e6-b4c0-db9191879dbd",
+								"type": "text"
+							},
+							{
+								"key": "x-cognito-sub",
+								"value": "091a0410-3e96-4da9-a22a-3c8c2ec162a4",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-cognito-name",
+								"value": "STEFANI",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-cognito-family-name",
+								"value": "PICO",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-cognito-custom-full-name-provider",
+								"value": "PICO ALAVA STEFANI BEATRIZ",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-cognito-username",
+								"value": "0941195182",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-cognito-email",
+								"value": "0941195182@dev.peigo.com.ec",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-cognito-phone-number",
+								"value": "0985389036",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"card_token\": \"9zc7a49f7ee93fe6017ee94165460545\",\r\n  \"amount\": 1.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/api/v1/cash_ins",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cash_ins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authorization}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "incap_ses_1430_2912954=pQxwL2wK/AtV77IUDWLYEzoLv2QAAAAAYyaSt4RQVT35wYOp5XxfUQ==; incap_ses_994_2912954=wJWcQ2WVjzQTpttCt2bLDfeZvmQAAAAAPTJjt0FFYiD+IMmVXvb0XQ==; nlbi_2912954=G6dqNxiHIl7TYVLECm5X7AAAAADQcJkJtjI9+a52scMHjHdL; visid_incap_2912954=iaQrO3mSQ1ikplUelpPRa5OrYmQAAAAAQUIPAAAAAABQrgP3LtCqHnH3l/k7TtdA",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"transientToken\": \"eyJraWQiOiIwOHB6NnJLbG5qVnhZSHNrM2twcWxxVVpsNDJJeVZhVSIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJGbGV4LzA4IiwiZXhwIjoxNjkwMjk3MzA2LCJ0eXBlIjoiYXBpLTAuMS4wIiwiaWF0IjoxNjkwMjk2NDA2LCJqdGkiOiIxRTMxMkNDNFg1MlA0S0JKRjVVTlpOVENONkRLSloxRk83U05QWDkxUzNIUjlWVUVCMjhZNjRCRkUzREEyNjJDIiwiY29udGVudCI6eyJwYXltZW50SW5mb3JtYXRpb24iOnsiY2FyZCI6eyJleHBpcmF0aW9uWWVhciI6eyJ2YWx1ZSI6IjI2In0sIm51bWJlciI6eyJtYXNrZWRWYWx1ZSI6IlhYWFhYWFhYWFhYWDEwMDAiLCJiaW4iOiI0MDAwMDAifSwic2VjdXJpdHlDb2RlIjp7fSwiZXhwaXJhdGlvbk1vbnRoIjp7InZhbHVlIjoiMDEifX19fX0.O0UPp2JflcD4o1_C3mR1sUsHhkkjlZNUmbYJUzeapz6cDJMTmVuZsQfEkkl38Xkq6V9W6UjgzU7RWGAOlqWKvefz8G3gEaQraoZypbgJLgoPHnb_yY1zrSCZNP-fN9gvJF_N4Z2qQIZFLEurGDoV6Pk2QaKLBUpsSgCZcnCMQhA15yKDut5qwc91AgMZx5uN24sHZ7CIt6ybjNBMt-ssYs9FAPjST5J9NkiYJPetWi9x9FJWLrImDH7ERBaWVcJK6Ojr0ThIkzVju85a1zob_1LeaTe-5KczHhOivvaai3Kl0yo9qV9cQdolih2F8xu4alnnUQAN0Wg4b0JNXQiCaA\",\n    \"fingerprintSessionId\": \"e235afa3-4e9d-4e54-83bf-e54453809a04\",\n    \"orderNumber\": \"26e7e779-ac48-49d5-bc9c-7d7ff9e6d8e1\",\n    \"consumerSessionId\": \"0_49cbc854-7e3f-49fe-9f1f-30d72d705293\",\n    \"cardOwnerName\": \"JIMMY\"\n}"
+						},
+						"url": {
+							"raw": "https://api.dev.peigo.com.ec/cs-wallet-cash-in/v1/onboarding",
+							"protocol": "https",
+							"host": [
+								"api",
+								"dev",
+								"peigo",
+								"com",
+								"ec"
+							],
+							"path": [
+								"cs-wallet-cash-in",
+								"v1",
+								"onboarding"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Virtual Cards",
+			"item": [
+				{
+					"name": "ps-virtual-card",
+					"item": [
+						{
+							"name": "save",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authorization}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"design\": \"001\",\n    \"channel\": \"001\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{internalUri}}/ps-virtual-card/v1/cards",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"ps-virtual-card",
+										"v1",
+										"cards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authorization}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{internalUri}}/ps-virtual-card/v1/cards/062b538f-766a-46de-a9b1-2f47dfd11a8e/detail",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"ps-virtual-card",
+										"v1",
+										"cards",
+										"062b538f-766a-46de-a9b1-2f47dfd11a8e",
+										"detail"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Obtener tarjeta",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{authorization}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-cognito-sub",
+								"value": "091a0410-3e96-4da9-a22a-3c8c2ec162a4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/virtual_cards",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"virtual_cards"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "p2p",
+			"item": [
+				{
+					"name": "bs-transfer",
+					"item": [
+						{
+							"name": "p2p",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authorization}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"debitAccount\":\"1138503430\",\"creditAccount\":\"1138505735\",\"amount\":0.01,\"cardType\":\"CC\",\"identificationNumber\":\"2100681622\",\"sequentialCash\":\"SECUENCIALCASH01\",\"beneficiaryName\":\"dos\",\"beneficiaryCodeBank\":\"17\",\"beneficiaryIdentificationType\":\"C\",\"beneficiaryIdentificationNumber\":\"0987546314\",\"reference\":\"some reference\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{internalUri}}/bs-transfer/v1/transfer/p2p",
+									"host": [
+										"{{internalUri}}"
+									],
+									"path": [
+										"bs-transfer",
+										"v1",
+										"transfer",
+										"p2p"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "cs-wallet-p2p",
+					"item": [
+						{
+							"name": "p2p",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authorization}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authorization}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\":0.14,\n    \"description\": \"PRUEBA\",\n    \"destinationUserId\": \"b073b9b8-40eb-42b5-a1ae-52ebac6a135e\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{uri}}/cs-wallet-p2p/v1/transfers",
+									"host": [
+										"{{uri}}"
+									],
+									"path": [
+										"cs-wallet-p2p",
+										"v1",
+										"transfers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "getToken",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var body = JSON.parse(responseBody);",
+							"pm.environment.set(\"access_token\", body.access_token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Cookie",
+						"value": "XSRF-TOKEN=517ed703-3b2b-488a-84d5-a7cc5400619a"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "{{clientIdToken}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{clientSecretToken}}",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "public/public",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{getTokenURI}}.auth.us-east-1.amazoncognito.com/token",
+					"protocol": "https",
+					"host": [
+						"{{getTokenURI}}",
+						"auth",
+						"us-east-1",
+						"amazoncognito",
+						"com"
+					],
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var body = JSON.parse(responseBody);",
+							"pm.environment.set(\"authorization\", body.authentication.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": {{username}},\n    \"password\": {{password}},\n    \"token_device\": \"cbb95c58-a5a0-4743-8421-748df87a8af3:1659041687656\",\n    \"operation_system\": \"IOS\",\n    \"version_peigo\": \"v0.1.25.7.30.login.test.dev\",\n    \"encoded_data\": {{encoded_data}}\n}"
+				},
+				"url": {
+					"raw": "{{uriLogin}}/api/v2/identity_provider/login",
+					"host": [
+						"{{uriLogin}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"identity_provider",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "balance",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{uri}}/api/v2/virtual_accounts/balance",
+					"host": [
+						"{{uri}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"virtual_accounts",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
